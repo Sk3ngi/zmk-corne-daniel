@@ -1,0 +1,272 @@
+/*
+*
+* Copyright (c) 2025 Daniel Suter
+* SPDX-License-Identifier: MIT
+*
+*/
+
+#include "definitions.h"
+#include "keys_fr_swiss.h"
+#include "macros.dtsi"
+#include "combos.dtsi"
+
+/ {
+    // #define SYMBOL(NAME, SYMBOLS) \
+    //     NAME: NAME { \
+    //         compatible = "zmk,behavior-macro"; \
+    //         #binding-cells = <0>; \
+    //         wait-ms = <0>; \
+    //         tap-ms = <0>; \
+    //         bindings = <&macro_tap SYMBOLS>; \
+    //     };
+
+    #define SHIFTED_SYMBOL(NAME, UNSHIFTED, SHIFTED) \
+        NAME: NAME { \
+            compatible = "zmk,behavior-mod-morph"; \
+            #binding-cells = <0>; \
+            bindings = <UNSHIFTED>, <SHIFTED>; \
+            mods = <(MOD_LSFT|MOD_RSFT)>; \
+        };
+
+    #define ALTGR_SYMBOL(NAME, DEFAULT, ALTGRED) \
+        NAME: NAME { \
+            compatible = "zmk,behavior-mod-morph"; \
+            #binding-cells = <0>; \
+            bindings = <DEFAULT>, <ALTGRED>; \
+            mods = <(MOD_RALT)>; \
+        };
+
+    #define TAPHOLD_SYMBOL(NAME, TAP, HOLD) \
+        NAME: NAME { \
+            compatible = "zmk,behavior-hold-tap"; \
+            #binding-cells = <2>; \
+            tapping-term-ms = <250>; \
+            flavor = "tap-preferred"; \
+            bindings = <HOLD>, <TAP>; \
+            quick-tap-ms = <50>; \
+        };
+        // require-prior-idle-ms = <50>; \
+
+    #define MODTAP_SYMBOL(NAME, BINDINGS) \
+        NAME: NAME { \
+            compatible = "zmk,behavior-hold-tap"; \
+            #binding-cells = <2>; \
+            tapping-term-ms = <250>; \
+            flavor = "tap-preferred"; \
+            bindings = <&kp>, <BINDINGS>; \
+            quick-tap-ms = <50>; \
+        };
+        // require-prior-idle-ms = <50>; \
+
+    // Used for DeadKey with sticky layer
+    #define STICKLAYERTAP_SYMBOL(NAME, BINDINGS) \
+        NAME: NAME { \
+            compatible = "zmk,behavior-hold-tap"; \
+            #binding-cells = <2>; \
+            tapping-term-ms = <250>; \
+            flavor = "tap-preferred"; \
+            bindings = <&sl>, <BINDINGS>; \
+        };
+
+    // #define LAYERTAP_SYMBOL(NAME, BINDINGS) \
+    //     NAME: NAME { \
+    //         compatible = "zmk,behavior-hold-tap"; \
+    //         #binding-cells = <2>; \
+    //         tapping-term-ms = <250>; \
+    //         flavor = "tap-preferred"; \
+    //         bindings = <&lt>, <BINDINGS>; \
+    //     };
+
+
+    #define LAYERTAP_SYMBOL(NAME, BINDINGS) \
+        NAME: NAME { \
+            compatible = "zmk,behavior-hold-tap"; \
+            #binding-cells = <2>; \
+            tapping-term-ms = <250>; \
+            flavor = "tap-preferred"; \
+            bindings = <&mo>, <BINDINGS>; \
+        };
+    //         quick-tap-ms = <QUICK_TAP_TERM>; \
+    //         require-prior-idle-ms = <QUICK_TAP_TERM>; \
+
+    // #define MACRO_SYMBOL(NAME, SYMBOLS) \
+    //     NAME: NAME { \
+    //         compatible = "zmk,behavior-macro"; \
+    //         #binding-cells = <0>; \
+    //         wait-ms = <10>; \
+    //         tap-ms = <10>; \
+    //         bindings = <&macro_tap SYMBOLS>; \
+    //     };
+
+    // #define TAPDANCE_SYMBOL(NAME, TAPHOLD, DTAP, TTAP) \
+    //     NAME: NAME { \
+    //         compatible = "zmk,behavior-tap-dance"; \
+    //         #binding-cells = <0>; \
+    //         tapping-term-ms = <TD_TAPPING_TERM>; \
+    //         bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
+    //     };
+
+    behaviors {
+        /* à | À */
+        SHIFTED_SYMBOL(sh_agrv, &kp CH_A_GRAVE, &mcr_shft_a_grv)
+        MODTAP_SYMBOL(mt_agrv, &sh_agrv)
+        /* â | Â */
+        SHIFTED_SYMBOL(sh_acar, &mcr_a_car, &mcr_shft_a_car)
+        /* ç | Ç */
+        SHIFTED_SYMBOL(sh_cced, &kp CH_C_CEDILLA, &kp CH_C_CEDILLA_SHFTED)
+        /* è | È */
+        SHIFTED_SYMBOL(sh_egrv, &kp CH_E_GRAVE, &mcr_shft_e_grv)
+        MODTAP_SYMBOL(mt_egrv, &sh_egrv)
+        /* é | É */
+        SHIFTED_SYMBOL(sh_eacu, &kp CH_E_ACUTE, &mcr_shft_e_acu)
+        MODTAP_SYMBOL(mt_eacu, &sh_eacu)
+        /* ê | Ê */
+        SHIFTED_SYMBOL(sh_ecar, &mcr_e_car, &mcr_shft_e_car)
+        MODTAP_SYMBOL(mt_ecar, &sh_ecar)
+        /* î | Î */
+        SHIFTED_SYMBOL(sh_icar, &mcr_i_car, &mcr_shft_i_car)
+        MODTAP_SYMBOL(mt_icar, &sh_icar)
+        /* ï | Ï */
+        SHIFTED_SYMBOL(sh_iumlt, &mcr_i_umlt, &mcr_shft_i_umlt)
+        MODTAP_SYMBOL(mt_iumlt, &sh_iumlt)
+        /* ô | Ô */
+        SHIFTED_SYMBOL(sh_ocar, &mcr_o_car, &mcr_shft_o_car)
+        /* ù | Ù */
+        SHIFTED_SYMBOL(sh_ugrv, &mcr_u_grv, &mcr_shft_u_grv)
+        MODTAP_SYMBOL(mt_ugrv, &sh_ugrv)
+        /* û | Û */
+        SHIFTED_SYMBOL(sh_ucar, &mcr_u_car, &mcr_shft_u_car)
+        /* ñ | Ñ */
+        SHIFTED_SYMBOL(sh_ntld, &mcr_n_tld, &mcr_shft_n_tld)
+        /* ? | ¿ */
+        SHIFTED_SYMBOL(sh_qmark, &kp CH_QMARK, &kp CH_QMARK_INV)
+        /* ! | ¡ */
+        SHIFTED_SYMBOL(sh_excl, &kp CH_EXCL, &kp CH_EXCL_INV)
+        MODTAP_SYMBOL(mt_excl, &sh_excl)
+        /* _ | – */
+        SHIFTED_SYMBOL(sh_under, &kp CH_UNDER, &kp CH_EM_DASH)
+        /* · | • */
+        SHIFTED_SYMBOL(sh_mdot, &kp CH_MDOT, &kp CH_BULLET)
+        /* ^ | D^*/
+        SHIFTED_SYMBOL(sh_caret, &mcr_caret, &kp CH_CARET_DK)
+        /* < | ≤ */
+        SHIFTED_SYMBOL(sh_less, &kp CH_LT, &kp CH_LET)
+        /* > | ≥ */
+        SHIFTED_SYMBOL(sh_grtr, &kp CH_GT, &kp CH_GET)
+        /* $ | £ */
+        SHIFTED_SYMBOL(sh_dollar, &kp CH_DOLLAR, &kp CH_POUND_SIGN)
+        /* % | ‰ */
+        SHIFTED_SYMBOL(sh_prcnt, &kp CH_PRCNT, &kp CH_PRMLL)
+        /* ¨ | D¨ */
+        SHIFTED_SYMBOL(sh_umlaut, &mcr_umlaut, &kp CH_UMLAUT_DK)
+        /* = | ≠ */
+        SHIFTED_SYMBOL(sh_equal, &kp CH_EQUAL, &kp CH_NEQUAL)
+        /* * | · */
+        SHIFTED_SYMBOL(sh_times, &kp CH_ASTRK, &kp CH_MDOT)
+        /* ´ | D´ */
+        SHIFTED_SYMBOL(sh_acute, &mcr_acute, &kp CH_ACUTE_DK)
+        /* ` | D` */
+        SHIFTED_SYMBOL(sh_grave, &mcr_grave, &kp CH_GRAVE_DK)
+        /* { | ° */
+        SHIFTED_SYMBOL(sh_lbrace, &kp CH_LBRC, &kp CH_DEG)
+        MODTAP_SYMBOL(mt_lbrace, &sh_lbrace)
+        /* ( | “ */
+        SHIFTED_SYMBOL(sh_lpar, &kp CH_LPAR, &kp CH_LDQM)
+        MODTAP_SYMBOL(mt_lpar, &sh_lpar)
+        /* ) | ” */
+        SHIFTED_SYMBOL(sh_rpar, &kp CH_RPAR, &kp CH_RDQM)
+        MODTAP_SYMBOL(mt_rpar, &sh_rpar)
+        /* } | € */
+        SHIFTED_SYMBOL(sh_rbrace, &kp CH_RBRC, &kp CH_EURO)
+        MODTAP_SYMBOL(mt_rbrace, &sh_rbrace)
+        /* + | ± */
+        SHIFTED_SYMBOL(sh_plus, &kp CH_PLUS, &kp CH_PLUS_MINUS)
+        MODTAP_SYMBOL(mt_plus, &sh_plus)
+        /* - | ¯ */
+        SHIFTED_SYMBOL(sh_minus, &kp CH_MINUS, &kp CH_MACRON)
+        MODTAP_SYMBOL(mt_minus, &sh_minus)
+        /* / | ÷ */
+        SHIFTED_SYMBOL(sh_slash, &kp CH_SLASH, &kp CH_DIVISION)
+        MODTAP_SYMBOL(mt_slash, &sh_slash)
+        /* " | @ */
+        SHIFTED_SYMBOL(sh_dquotes, &kp CH_DQT, &kp CH_AT)
+        MODTAP_SYMBOL(mt_dquotes, &sh_dquotes)
+        /* [ | « */
+        SHIFTED_SYMBOL(sh_lbkt, &kp CH_LBKT, &kp CH_LGMT)
+        /* ] | » */
+        SHIFTED_SYMBOL(sh_rbkt, &kp CH_RBKT, &kp CH_RGMT)
+        /* ~ | D~ */
+        SHIFTED_SYMBOL(sh_tilde, &mcr_tilde, &kp CH_TILDE_DK)
+        /* Δ | Σ */
+        SHIFTED_SYMBOL(sh_delta, &kp CH_DELTA, &kp CH_SIGMA)
+        /* π | Π */
+        SHIFTED_SYMBOL(sh_pi, &kp CH_PI, &kp CH_PI_SHIFTED)
+        /* 1 | ƒ */
+        SHIFTED_SYMBOL(sh_one, &kp CH_N1, &kp CH_FUNCTION)
+        /* 2 | √ */
+        SHIFTED_SYMBOL(sh_two, &kp CH_N2, &kp CH_RADICAL)
+        /* 3 | ∫ */
+        SHIFTED_SYMBOL(sh_three, &kp CH_N3, &kp CH_INTEGRAL)
+        /* 4 | + */
+        SHIFTED_SYMBOL(sh_four, &kp CH_N4, &kp CH_PLUS)
+        MODTAP_SYMBOL(mt_four, &sh_four)
+        /* 5 | - */
+        SHIFTED_SYMBOL(sh_five, &kp CH_N5, &kp CH_MINUS)
+        MODTAP_SYMBOL(mt_five, &sh_five)
+        /* 6 | / */
+        SHIFTED_SYMBOL(sh_six, &kp CH_N6, &kp CH_SLASH)
+        MODTAP_SYMBOL(mt_six, &sh_six)
+        /* 7 | = */
+        SHIFTED_SYMBOL(sh_seven, &kp CH_N7, &kp CH_EQUAL)
+        /* 8 | * */
+        SHIFTED_SYMBOL(sh_eight, &kp CH_N8, &kp CH_ASTRK)
+        /* 9 | ∞ */
+        SHIFTED_SYMBOL(sh_nine, &kp CH_N9, &kp CH_INFINITY)
+        /* 0 | 0 */
+        SHIFTED_SYMBOL(sh_zero, &kp CH_N0, &kp CH_N0)
+        MODTAP_SYMBOL(mt_zero, &sh_zero)
+        /* . | , */
+        SHIFTED_SYMBOL(sh_dot, &kp CH_DOT, &kp CH_COMMA)
+        MODTAP_SYMBOL(mt_dot, &sh_dot)
+
+        ALTGR_SYMBOL(kp_q, &kp CH_Q, &sh_caret)
+        ALTGR_SYMBOL(kp_c, &kp CH_C, &sh_less)
+        STICKLAYERTAP_SYMBOL(dk_c, &kp_c)
+        ALTGR_SYMBOL(kp_o, &kp CH_O, &sh_grtr)
+        ALTGR_SYMBOL(kp_p, &kp CH_P, &sh_dollar)
+        ALTGR_SYMBOL(kp_w, &kp CH_W, &sh_prcnt)
+        ALTGR_SYMBOL(kp_j, &kp CH_J, &sh_umlaut)
+        ALTGR_SYMBOL(kp_m, &kp CH_M, &sh_equal)
+        ALTGR_SYMBOL(kp_d, &kp CH_D, &sh_times)
+        ALTGR_SYMBOL(kp_f, &kp CH_F, &sh_acute)
+        STICKLAYERTAP_SYMBOL(dk_f, &kp_f)
+        ALTGR_SYMBOL(kp_y, &kp CH_Y, &sh_grave)
+        ALTGR_SYMBOL(kp_a, &kp CH_A, &sh_lbrace)
+        MODTAP_SYMBOL(md_a, &kp_a)
+        ALTGR_SYMBOL(kp_s, &kp CH_S, &sh_lpar)
+        MODTAP_SYMBOL(md_s, &kp_s)
+        ALTGR_SYMBOL(kp_e, &kp CH_E, &sh_rpar)
+        MODTAP_SYMBOL(md_e, &kp_e)
+        ALTGR_SYMBOL(kp_n, &kp CH_N, &sh_rbrace)
+        MODTAP_SYMBOL(md_n, &kp_n)
+        ALTGR_SYMBOL(kp_b, &kp CH_B, &kp CH_HASH)
+        ALTGR_SYMBOL(kp_l, &kp CH_L, &kp CH_BSLH)
+        ALTGR_SYMBOL(kp_r, &kp CH_R, &sh_plus)
+        MODTAP_SYMBOL(md_r, &kp_r)
+        ALTGR_SYMBOL(kp_t, &kp CH_T, &sh_minus)
+        MODTAP_SYMBOL(md_t, &kp_t)
+        ALTGR_SYMBOL(kp_i, &kp CH_I, &sh_slash)
+        MODTAP_SYMBOL(md_i, &kp_i)
+        ALTGR_SYMBOL(kp_u, &kp CH_U, &sh_dquotes)
+        MODTAP_SYMBOL(md_u, &kp_u)
+        ALTGR_SYMBOL(kp_x, &kp CH_X, &sh_lbkt)
+        ALTGR_SYMBOL(kp_z, &kp CH_Z, &sh_rbkt)
+        ALTGR_SYMBOL(kp_v, &kp CH_V, &sh_tilde)
+        ALTGR_SYMBOL(kp_h, &kp CH_H, &kp CH_PIPE)
+        ALTGR_SYMBOL(kp_g, &kp CH_G, &kp CH_AMPS)
+        ALTGR_SYMBOL(kp_k, &kp CH_K, &kp CH_NOT)
+        ALTGR_SYMBOL(kp_spc, &kp SPACE, &kp CH_APOS)
+        LAYERTAP_SYMBOL(lt_spc, &kp_spc)
+
+    };
+};

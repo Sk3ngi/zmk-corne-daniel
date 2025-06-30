@@ -1,0 +1,57 @@
+/*
+*
+* Copyright (c) 2025 Daniel Suter
+* SPDX-License-Identifier: MIT
+*
+*/
+
+// #include "definitions.h"
+#include "keys_fr_swiss.h"
+
+
+/ {
+    #define STRINGIFY(x) #x
+    #define EXPAND_AND_STRINGIFY(x) STRINGIFY(x)
+    #define MACRO(NAME, BINDINGS) \
+        mcr_##NAME: mcr_##NAME { \
+            compatible = "zmk,behavior-macro"; \
+            #binding-cells = <0>; \
+            wait-ms = <20>; \
+            tap-ms = <10>; \
+            bindings = <BINDINGS>; \
+        };
+
+    macros {
+        /* À â Â */
+        MACRO(shft_a_grv, &macro_tap &kp CH_GRAVE_DK &macro_tap &kp LS(CH_A))
+        MACRO(a_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp CH_A)
+        MACRO(shft_a_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp LS(CH_A))
+        /* È É ê Ê */
+        MACRO(shft_e_grv, &macro_tap &kp CH_GRAVE_DK &macro_tap &kp LS(CH_E))
+        MACRO(shft_e_acu, &macro_tap &kp CH_ACUTE_DK &macro_tap &kp LS(CH_E))
+        MACRO(e_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp CH_E)
+        MACRO(shft_e_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp LS(CH_E))
+        /* î Î ï Ï */
+        MACRO(i_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp CH_I)
+        MACRO(shft_i_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp LS(CH_I))
+        MACRO(i_umlt, &macro_tap &kp CH_UMLAUT_DK &macro_tap &kp CH_I)
+        MACRO(shft_i_umlt, &macro_tap &kp CH_UMLAUT_DK &macro_tap &kp LS(CH_I))
+        /* ô Ô */
+        MACRO(o_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp CH_O)
+        MACRO(shft_o_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp LS(CH_O))
+        /* ù Ù û Û */
+        MACRO(u_grv, &macro_tap &kp CH_GRAVE_DK &macro_tap &kp CH_U)
+        MACRO(shft_u_grv, &macro_tap &kp CH_GRAVE_DK &macro_tap &kp LS(CH_U))
+        MACRO(u_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp CH_U)
+        MACRO(shft_u_car, &macro_tap &kp CH_CARET_DK &macro_tap &kp LS(CH_U))
+        /* ñ Ñ */
+        MACRO(n_tld, &macro_tap &kp CH_TILDE_DK &macro_tap &kp CH_N)
+        MACRO(shft_n_tld, &macro_tap &kp CH_TILDE_DK &macro_tap &kp LS(CH_N))
+        /* ^ ´ ` ¨ ~ */
+        MACRO(caret, &macro_tap &kp CH_CARET_DK &macro_tap &kp CH_SPACE)
+        MACRO(acute, &macro_tap &kp CH_ACUTE_DK &macro_tap &kp CH_ACUTE_DK)
+        MACRO(grave, &macro_tap &kp CH_GRAVE_DK &macro_tap &kp CH_SPACE)
+        MACRO(umlaut, &macro_tap &kp CH_UMLAUT_DK &macro_tap &kp CH_UMLAUT_DK)
+        MACRO(tilde, &macro_tap &kp CH_TILDE_DK &macro_tap &kp CH_SPACE)
+    };
+};
