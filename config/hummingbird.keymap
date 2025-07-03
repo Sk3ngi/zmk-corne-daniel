@@ -32,14 +32,14 @@
             // -----------------------------------------------------------------------------
             // | ^ D^| < ≤ | > ≥ | $ £ | % ‰ |   | ¨ D¨| = ≠ | * · | ´ D´| ` D`|
             // | { ° | ( “ | ) ” | } € |  #  |   |  \  | + ± | - ¯ | / ÷ | " @ |
-            //       | [ « | ] » | ~ D~|               |  |  |  &  |  ¬  |
-            //                  | DEL | BSPC |   |  '   | ENT |
+            //       | [ « | ] » | ~ D~|               | | & | ! ¬ | ? ' |
+            //                  | DEL | BSPC |   | SPC  | ENT |
             display-name = "Alpha";
             bindings = <
                 &kp_q         &dk_c ACC_L 0 &kp_o         &kp_p         &kp_w            &kp_j           &kp_m        &kp_d         &dk_f ACC_L 0 &kp_y
                 &md_a LSHFT 0 &md_s LGUI 0  &md_e LCTRL 0 &md_n LALT 0  &kp_b            &kp_l           &md_r LALT 0 &md_t LCTRL 0 &md_i LGUI 0  &md_u LSHFT 0
                               &kp_x         &kp_z         &kp_v                                          &kp_h        &kp_g         &kp_k
-                                                          &lt MSE_L DEL &mt RALT BSPC    &lt_spc NAV_L 0 &lt FUN_L RET
+                                                          &lt MSE_L DEL &mt RALT BSPC    &lt NAV_L SPACE &lt FUN_L RET
             >;
         };
 
@@ -49,13 +49,13 @@
             // | â Â | ç Ç | œ Œ | ô Ô | --- |   | ? ¿ |  µ  | _ – | --- | û Û |
             // | à À | é É | è È | ê Ê | ñ Ñ |   | --- | ! ¡ | î Î | ï Ï | ù Ù |
             //       | ß ẞ | æ Æ | --- |               |  …  | --- | · • |
-            //                  | DEL | BSPC |   | SPC  | ENT |
+            //                  | DEL | BSPC |   |  '   | ENT |
             display-name = "Acc";
             bindings = <
-                &sh_acar         &sh_cced        &kp CH_EOE       &sh_ocar        &none       &sh_qmark   &kp CH_MU       &sh_under        &trans           &sh_ucar
-                &mt_agrv LSHFT 0 &mt_eacu LGUI 0 &mt_egrv LCTRL 0 &mt_ecar LALT 0 &sh_ntld    &none       &mt_excl LALT 0 &mt_icar LCTRL 0 &mt_iumlt LGUI 0 &mt_ugrv LSHFT 0
-                                 &kp CH_SHARP_S  &kp CH_ASH       &none                                   &kp CH_ELLIPSIS &none            &sh_mdot
-                                                                  &trans          &trans      &trans      &trans
+                &sh_acar         &sh_cced        &kp CH_EOE       &sh_ocar        &none       &sh_qmark         &kp CH_MU       &sh_under        &trans           &sh_ucar
+                &mt_agrv LSHFT 0 &mt_eacu LGUI 0 &mt_egrv LCTRL 0 &mt_ecar LALT 0 &sh_ntld    &none             &mt_excl LALT 0 &mt_icar LCTRL 0 &mt_iumlt LGUI 0 &mt_ugrv LSHFT 0
+                                 &kp CH_SHARP_S  &kp CH_ASH       &none                                         &kp CH_ELLIPSIS &none            &sh_mdot
+                                                                  &trans          &trans      &lt NAV_L CH_APOS &trans
             >;
         };
 
@@ -71,7 +71,7 @@
                 &kp HOME &msc SCRL_UP   &kp UP   &msc SCRL_DOWN   &kp PG_UP      &sh_delta &sh_seven       &sh_eight        &sh_nine       &sh_dot
                 &kp END  &kp LEFT       &kp DOWN &kp RIGHT        &kp PG_DN      &sh_pi    &mt_four LALT 0 &mt_five LCTRL 0 &mt_six LGUI 0 &mt_zero LSHFT 0
                          &msc SCRL_LEFT &none    &msc SCRL_RIGHT                           &sh_one         &sh_two          &sh_three
-                                                 &trans           &trans         &trans    &trans
+                                                 &trans           &trans         &none     &trans
             >;
         };
 

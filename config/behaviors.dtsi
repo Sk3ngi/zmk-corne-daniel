@@ -191,6 +191,12 @@
         /* " | @ */
         SHIFTED_SYMBOL(sh_dquotes, &kp CH_DQT, &kp CH_AT)
         MODTAP_SYMBOL(mt_dquotes, &sh_dquotes)
+        /* | | & */
+        SHIFTED_SYMBOL(sh_pipe, &kp CH_PIPE, &kp CH_AMPS)
+        /* ! | ¬ */
+        SHIFTED_SYMBOL(sh_excl_not, &kp CH_EXCL, &kp CH_NOT)
+        /* ? | ' */
+        SHIFTED_SYMBOL(sh_qmark_apos, &kp CH_QMARK , &kp CH_APOS)
         /* [ | « */
         SHIFTED_SYMBOL(sh_lbkt, &kp CH_LBKT, &kp CH_LGMT)
         /* ] | » */
@@ -262,11 +268,12 @@
         ALTGR_SYMBOL(kp_x, &kp CH_X, &sh_lbkt)
         ALTGR_SYMBOL(kp_z, &kp CH_Z, &sh_rbkt)
         ALTGR_SYMBOL(kp_v, &kp CH_V, &sh_tilde)
-        ALTGR_SYMBOL(kp_h, &kp CH_H, &kp CH_PIPE)
-        ALTGR_SYMBOL(kp_g, &kp CH_G, &kp CH_AMPS)
-        ALTGR_SYMBOL(kp_k, &kp CH_K, &kp CH_NOT)
-        ALTGR_SYMBOL(kp_spc, &kp SPACE, &kp CH_APOS)
-        LAYERTAP_SYMBOL(lt_spc, &kp_spc)
+        ALTGR_SYMBOL(kp_h, &kp CH_H, &sh_pipe)
+        ALTGR_SYMBOL(kp_g, &kp CH_G, &sh_excl_not)
+        ALTGR_SYMBOL(kp_k, &kp CH_K, &sh_qmark_apos)
+        // ALTGR_SYMBOL(kp_spc, &kp SPACE, &kp CH_APOS)
+        // LAYERTAP_SYMBOL(lt_spc, &kp SPACE)
+        // LAYERTAP_SYMBOL(lt_apos, &kp CH_APOS)
 
     };
 };
