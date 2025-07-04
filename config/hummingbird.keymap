@@ -30,9 +30,9 @@
             //                  | DEL | BSPC |   | SPC  | ENT |
             // ALTGR
             // -----------------------------------------------------------------------------
-            // | ^ D^| < ≤ | > ≥ | $ £ | % ‰ |   | ¨ D¨| = ≠ | * · | ´ D´| ` D`|
+            // |  ^  | < ≤ | > ≥ | $ £ | % ‰ |   | ; , |  &  | * · | = ' |  `  |
             // | { ° | ( “ | ) ” | } € |  #  |   |  \  | + ± | - ¯ | / ÷ | " @ |
-            //       | [ « | ] » | ~ D~|               | | & | ! ¬ | ? ' |
+            //       | [ « | ] » | ~ D~|               |  |  | ! ¬ |  ?  |
             //                  | DEL | BSPC |   | SPC  | ENT |
             display-name = "Alpha";
             bindings = <
@@ -46,40 +46,40 @@
         accent_layer {
             // ACC
             // -----------------------------------------------------------------------------
-            // | â Â | ç Ç | œ Œ | ô Ô | --- |   | ? ¿ |  µ  | _ – | --- | û Û |
+            // | â Â | ç Ç | œ Œ | ô Ô | --- |   | ? ¿ |  µ  | _ – |  '  | û Û |
             // | à À | é É | è È | ê Ê | ñ Ñ |   | --- | ! ¡ | î Î | ï Ï | ù Ù |
-            //       | ß ẞ | æ Æ | --- |               |  …  | --- | · • |
-            //                  | DEL | BSPC |   |  '   | ENT |
+            //       | ß ẞ | æ Æ | --- |               |  …  | --- | --- |
+            //                  | DEL | BSPC |   | SPC  | ENT |
             display-name = "Acc";
             bindings = <
-                &sh_acar         &sh_cced        &kp CH_EOE       &sh_ocar        &none       &sh_qmark         &kp CH_MU       &sh_under        &trans           &sh_ucar
-                &mt_agrv LSHFT 0 &mt_eacu LGUI 0 &mt_egrv LCTRL 0 &mt_ecar LALT 0 &sh_ntld    &none             &mt_excl LALT 0 &mt_icar LCTRL 0 &mt_iumlt LGUI 0 &mt_ugrv LSHFT 0
-                                 &kp CH_SHARP_S  &kp CH_ASH       &none                                         &kp CH_ELLIPSIS &none            &sh_mdot
-                                                                  &trans          &trans      &lt NAV_L CH_APOS &trans
+                &sh_acar         &sh_cced        &kp CH_EOE       &sh_ocar        &none       &sh_qmark &kp CH_MU       &sh_under        &kp CH_APOS      &sh_ucar
+                &mt_agrv LSHFT 0 &mt_eacu LGUI 0 &mt_egrv LCTRL 0 &mt_ecar LALT 0 &sh_ntld    &none     &mt_excl LALT 0 &mt_icar LCTRL 0 &mt_iumlt LGUI 0 &mt_ugrv LSHFT 0
+                                 &kp CH_SHARP_S  &kp CH_ASH       &none                                 &kp CH_ELLIPSIS &none            &none
+                                                                  &trans          &trans      &trans    &trans
             >;
         };
 
         navigation_layer {
             // NAVIGATION + NUMBER
             // -----------------------------------------------------------------------------
-            // |HOME |SCR-U| UP  |SCR-D|PG-UP|   | Δ Σ | 7 = | 8 * | 9 ∞ | . , |
-            // | END |LEFT |DOWN |RIGHT|PG-DW|   | π Π | 4 + | 5 - | 6 / | 0   |
+            // |HOME |SCR-U| UP  |SCR-D|PG-UP|   | Δ Σ | 7 ∞ | 8 * | 9 = | . , |
+            // | END |LEFT |DOWN |RIGHT|PG-DW|   | π Π | 4 + | 5 - | 6 / |  0  |
             //       |SCR-L| --- |SCR-R|               | 1 ƒ | 2 √ | 3 ∫ |
             //                  | DEL | BSPC |   | SPC  | ENT |
             display-name = "Nav";
             bindings = <
-                &kp HOME &msc SCRL_UP   &kp UP   &msc SCRL_DOWN   &kp PG_UP      &sh_delta &sh_seven       &sh_eight        &sh_nine       &sh_dot
-                &kp END  &kp LEFT       &kp DOWN &kp RIGHT        &kp PG_DN      &sh_pi    &mt_four LALT 0 &mt_five LCTRL 0 &mt_six LGUI 0 &mt_zero LSHFT 0
-                         &msc SCRL_LEFT &none    &msc SCRL_RIGHT                           &sh_one         &sh_two          &sh_three
-                                                 &trans           &trans         &none     &trans
+                &kp HOME      &msc SCRL_UP   &kp UP   &msc SCRL_DOWN   &kp PG_UP      &sh_delta &sh_seven       &sh_eight        &sh_nine       &sh_dot
+                &mt LSHFT END &kp LEFT       &kp DOWN &kp RIGHT        &kp PG_DN      &sh_pi    &mt_four LALT 0 &mt_five LCTRL 0 &mt_six LGUI 0 &mt_zero LSHFT 0
+                              &msc SCRL_LEFT &none    &msc SCRL_RIGHT                           &sh_one         &sh_two          &sh_three
+                                                      &trans           &trans         &none     &trans
             >;
         };
 
         mouse_layer {
             // MOUSE
             // -----------------------------------------------------------------------------
-            // | --- |SCR-U|MSE-U|SCR-D|PG-UP|   | --- | --- | --- | --- | --- |
-            // | --- |MSE-L|MSE-D|MSE-R|PG-DW|   | --- | MS1 | MS2 | MS3 | --- |
+            // |HOME |SCR-U|MSE-U|SCR-D|PG-UP|   | --- | --- | --- | --- | --- |
+            // | END |MSE-L|MSE-D|MSE-R|PG-DW|   | --- | MS1 | MS2 | MS3 | --- |
             //       |SCR-L| --- |SCR-R|               | MS4 | MS5 | --- |
             //                  | DEL | BSPC |   | SPC  | ENT |
             display-name = "Mse";

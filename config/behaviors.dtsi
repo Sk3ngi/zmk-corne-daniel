@@ -115,6 +115,7 @@
         ALTGRSYMBOL(agsy_deg, &kp CH_DEG)
         ALTGRSYMBOL(agsy_amps, &kp CH_AMPS)
         ALTGRSYMBOL(agsy_apos, &kp CH_APOS)
+        ALTGRSYMBOL(agsy_comma, &kp CH_COMMA)
 
         /* à | À */
         MODMORPH_SHIFT(sh_agrv, &kp CH_A_GRAVE, &mcr_shft_a_grv)
@@ -170,6 +171,8 @@
         MODMORPH_SHIFT(sh_umlaut, &mcr_umlaut, &agsy_umlautdk)
         /* = | ≠ */
         MODMORPH_SHIFT(sh_equal, &kp CH_EQUAL, &kp CH_NEQUAL)
+        /* = | ' */
+        MODMORPH_SHIFT(sh_equal_apos, &kp CH_EQUAL, &agsy_apos)
         /* * | · */
         MODMORPH_SHIFT(sh_times, &kp CH_ASTRK, &kp CH_MDOT)
         /* ´ | D´ */
@@ -231,18 +234,20 @@
         /* 6 | / */
         MODMORPH_SHIFT(sh_six, &kp CH_N6, &kp CH_SLASH)
         MODTAP_SYMBOL(mt_six, &sh_six)
-        /* 7 | = */
-        MODMORPH_SHIFT(sh_seven, &kp CH_N7, &kp CH_EQUAL)
+        /* 7 | ∞ */
+        MODMORPH_SHIFT(sh_seven, &kp CH_N7, &kp CH_INFINITY)
         /* 8 | * */
         MODMORPH_SHIFT(sh_eight, &kp CH_N8, &kp CH_ASTRK)
-        /* 9 | ∞ */
-        MODMORPH_SHIFT(sh_nine, &kp CH_N9, &kp CH_INFINITY)
+        /* 9 | = */
+        MODMORPH_SHIFT(sh_nine, &kp CH_N9, &kp CH_EQUAL)
         /* 0 | 0 */
         MODMORPH_SHIFT(sh_zero, &kp CH_N0, &kp CH_N0)
         MODTAP_SYMBOL(mt_zero, &sh_zero)
         /* . | , */
         MODMORPH_SHIFT(sh_dot, &kp CH_DOT, &kp CH_COMMA)
         MODTAP_SYMBOL(mt_dot, &sh_dot)
+        /* ; | , */
+        MODMORPH_SHIFT(sh_semicolon, &kp CH_SEMICOLON, &agsy_comma)
 
         MODMORPH_ALTGR(kp_q, &kp CH_Q, &sh_caret)
         MODMORPH_ALTGR(kp_c, &kp CH_C, &sh_less)
@@ -250,10 +255,10 @@
         MODMORPH_ALTGR(kp_o, &kp CH_O, &sh_grtr)
         MODMORPH_ALTGR(kp_p, &kp CH_P, &sh_dollar)
         MODMORPH_ALTGR(kp_w, &kp CH_W, &sh_prcnt)
-        MODMORPH_ALTGR(kp_j, &kp CH_J, &sh_umlaut)
-        MODMORPH_ALTGR(kp_m, &kp CH_M, &sh_equal)
+        MODMORPH_ALTGR(kp_j, &kp CH_J, &sh_semicolon)
+        MODMORPH_ALTGR(kp_m, &kp CH_M, &agsy_amps)
         MODMORPH_ALTGR(kp_d, &kp CH_D, &sh_times)
-        MODMORPH_ALTGR(kp_f, &kp CH_F, &sh_acute)
+        MODMORPH_ALTGR(kp_f, &kp CH_F, &sh_equal_apos)
         STICKLAYERTAP_SYMBOL(dk_f, &kp_f)
         MODMORPH_ALTGR(kp_y, &kp CH_Y, &sh_grave)
         MODMORPH_ALTGR(kp_a, &kp CH_A, &sh_lbrace)
